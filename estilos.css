@@ -44,9 +44,113 @@ h1 {
 }
 .tittle__element {
   font-size: 3rem;
+  margin: 1rem 0;
 }
 .clock {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+
+.btn-end {
+  width: 6rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+}
+
+.active {
+  display: inline;
+}
+
+.hidden {
+  display: none;
+}
+
+/* **** elementos de la alarma */
+
+.container__alarm-grid-active {
+  display: grid;
+  grid-template-rows: repeat(3 1fr);
+  gap: 0.3rem;
+}
+.alarm__input {
+  font-size: 1.2rem;
+}
+
+.alarm__tittle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.alarm__element {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CONTENEDOR DE CRONOMETRO */
+
+.container-countdown {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+
+  /* display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center; */
+}
+.grid-container {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+.countdown__tittle {
+  font-size: 3rem;
+  margin: 1rem 0;
+}
+
+.countdown__element {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-row: 1/2;
+  grid-column: 1/3;
+  font-size: 3rem;
+}
+
+.countdown__btn-initial {
+  grid-row: 2/3;
+  grid-column: 1/3;
+}
+.countdown__btn-reiniciar {
+  grid-row: 3/4;
+  grid-column: 1/3;
+}
+.countdown__btn-vuelta {
+  grid-row: 2/3;
+  grid-column: 1/2;
+}
+
+.container-vueltas {
+  border: thin solid white;
+}
+
+.vueltas {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  text-align: center;
 }

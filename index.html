@@ -22,9 +22,39 @@
     <section class="section__reloj">
       <h2 class="tittle__element">Elige una opción</h2>
       <div class="container__elements">
-        <div class="time__elements"><i class="bi bi-alarm"></i></div>
+        <!-- ICONOS -->
+        <div class="time__elements" title="alarma"><i class="bi bi-alarm"></i></div>
         <div class="time__elements" title="hora actual"><i class="bi bi-clock"></i></div>
-        <div class="time__elements"><i class="bi bi-stopwatch"></i></div>
+        <div class="time__elements" title="cronometro"><i class="bi bi-stopwatch"></i></div>
+        <!-- SECCION DEL RELOJ-->
+        <div class="clock-time hidden"></div>
+        <!-- CONTENEDOR DE ALARMA -->
+        <div class="container__alarm hidden">
+          <h2 class="alarm__tittle">Selecciona la fecha y hora</h2>
+          <div class="alarm__element"></div>
+          <input type="datetime-local" class="alarm__input">
+          <button class="btn-initial">Iniciar</button>
+          <button class="btn-end hidden">Terminar</button>
+        </div>
+        <!-- CONTENDER COUNTDOWN   -->
+        <div class="container-countdown hidden">
+          <div class="countdown__element">
+            00:00:00
+          </div>
+          <button class="countdown__btn-initial">Iniciar</button>
+          <button class="countdown__btn-stop hidden">Detener</button>
+          <button class="countdown__btn-reiniciar hidden">Reiniciar</button>
+          <button class="countdown__btn-vuelta hidden">Vuelta</button>
+        </div>
+      </div>
+      <div class="container-vueltas hidden">
+        <table class="vueltas">
+          <tr class="fila">
+            <td>Vuelta</td>
+            <td>Hora</td>
+            <td>Tiempo total</td>
+          </tr>
+        </table>
       </div>
     </section>
   </div>
