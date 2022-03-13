@@ -18,10 +18,15 @@ export default function countdown() {
     i = 0,
     interval;
 
+  // Variables para diferencia de tiempo.
   let secPrevious = 0,
+    secActual = 0,
+    minutosActual = 0,
     minutosPrevious = 0,
-    horasPrevious = 0,
-    secActual = 0;
+    j = 0;
+
+  // Variable set interval
+  let contador;
 
   d.addEventListener("click", (e) => {
     if (e.target === $iconStopwatch) {
@@ -70,27 +75,59 @@ export default function countdown() {
 
     if (e.target === $btnVuelta) {
       $containerVueltas.classList.remove("hidden");
-      const $filas = d.createElement("div");
-      $filas.classList.add("fila");
-      $filas.innerHTML = `${hr > 9 ? hr : "0" + hr}:${
-        min > 9 ? min : "0" + min
-      }:${sec > 9 ? sec : "0" + sec}`;
-      $containerVueltas.insertAdjacentElement("afterbegin", $filas);
-
-      // Tiempo en segundos
+      i++;
+      clearInterval(contador);
+      // Diferencia en segundos
       if (secPrevious === 0) {
         secPrevious = sec;
+        secActual = sec;
         console.log("Primera vuelta  " + secPrevious);
       } else if (secPrevious > sec) {
         secActual = Math.abs(sec - secPrevious);
         secActual = 60 - secActual;
         secPrevious = sec;
-        console.log(` Vuelta ${i++}: segundos  ${secActual}`);
+        console.log(` Vuelta${i} : segundos  ${secActual}`);
       } else {
         secActual = sec - secPrevious;
         secPrevious = sec;
-        console.log(` Vuelta ${i++}: segundos  ${secActual}`);
+        console.log(` Vuelta${i} : segundos  ${secActual}`);
       }
+      // Diferencia en minutos
+      if (i >= 1) {
+        contador = setInterval(() => {
+          j++;
+          console.log("segundos para el minuto " + j);
+        }, 1000);
+      }
+
+      if (j > 60) {
+        minutosActual = min - minutosPrevious;
+        minutosPrevious = min;
+      } else if (j < 60) {
+        minutosActual = 0;
+      }
+      j = 0;
+
+      // Creando elementos
+      const $fila = d.createElement("tr"),
+        $columTimeAbsolute = d.createElement("td"),
+        $columTime = d.createElement("td"),
+        $columVuelta = d.createElement("td");
+      // Introduciendo los valores de la columna
+      $columVuelta.innerHTML = i;
+      $columTimeAbsolute.innerHTML = `${hr > 9 ? hr : "0" + hr}:${
+        min > 9 ? min : "0" + min
+      }:${sec > 9 ? sec : "0" + sec}`;
+      $columTime.innerHTML = `${
+        minutosActual > 9 ? minutosActual : "0" + minutosActual
+      }:${secActual > 9 ? secActual : "0" + secActual}`;
+
+      // Insertando los elementos
+      $fila.classList.add("fila");
+      $fila.appendChild($columVuelta);
+      $fila.appendChild($columTime);
+      $fila.appendChild($columTimeAbsolute);
+      $containerVueltas.insertAdjacentElement("beforeend", $fila);
     }
   });
 }
